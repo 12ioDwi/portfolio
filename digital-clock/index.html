@@ -11,37 +11,111 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --bg-secondary: white;
-            --text-primary: #333;
-            --text-secondary: #666;
-            --text-tertiary: #999;
-            --clock-shadow: rgba(0, 0, 0, 0.2);
-            --accent-color: #667eea;
-            --accent-secondary: #764ba2;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
         }
 
+        /* Light Mode (Default) */
+        body.light-mode {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+
+        body.light-mode .clock {
+            background: white;
+            color: #333;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode .clock:hover {
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        body.light-mode .city {
+            color: #333;
+        }
+
+        body.light-mode .timezone {
+            color: #666;
+        }
+
+        body.light-mode .time {
+            color: #667eea;
+        }
+
+        body.light-mode .date {
+            color: #999;
+        }
+
+        body.light-mode h1 {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        body.light-mode .subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        body.light-mode .theme-btn {
+            background: white;
+            border: 2px solid #667eea;
+            color: #333;
+        }
+
+        /* Dark Mode */
         body.dark-mode {
-            --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            --bg-secondary: #0f3460;
-            --text-primary: #e0e0e0;
-            --text-secondary: #b0b0b0;
-            --text-tertiary: #808080;
-            --clock-shadow: rgba(0, 0, 0, 0.5);
-            --accent-color: #00d4ff;
-            --accent-secondary: #0099cc;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .clock {
+            background: #0f3460;
+            color: #e0e0e0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        body.dark-mode .clock:hover {
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+        }
+
+        body.dark-mode .city {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .timezone {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .time {
+            color: #00d4ff;
+        }
+
+        body.dark-mode .date {
+            color: #808080;
+        }
+
+        body.dark-mode h1 {
+            color: #00d4ff;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        body.dark-mode .subtitle {
+            color: rgba(0, 212, 255, 0.7);
+        }
+
+        body.dark-mode .theme-btn {
+            background: #0f3460;
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-primary);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            transition: background 0.3s ease;
         }
 
         /* Theme Toggle Button */
@@ -53,8 +127,6 @@
         }
 
         .theme-btn {
-            background: var(--bg-secondary);
-            border: 2px solid var(--accent-color);
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -64,12 +136,11 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px var(--clock-shadow);
+            font-weight: bold;
         }
 
         .theme-btn:hover {
             transform: scale(1.1) rotate(20deg);
-            box-shadow: 0 6px 20px var(--clock-shadow);
         }
 
         .theme-btn:active {
@@ -92,28 +163,16 @@
 
         h1 {
             text-align: center;
-            color: white;
             font-size: 3em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            transition: color 0.3s ease;
-        }
-
-        body.dark-mode h1 {
-            color: #00d4ff;
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
         }
 
         .subtitle {
             text-align: center;
-            color: rgba(255, 255, 255, 0.8);
             font-size: 1.1em;
             margin-bottom: 40px;
-            transition: color 0.3s ease;
-        }
-
-        body.dark-mode .subtitle {
-            color: rgba(0, 212, 255, 0.7);
+            transition: all 0.3s ease;
         }
 
         .clocks-grid {
@@ -124,57 +183,42 @@
         }
 
         .clock {
-            background: var(--bg-secondary);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 40px var(--clock-shadow);
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .clock:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 50px var(--clock-shadow);
         }
 
         .city {
             font-size: 1.3em;
             font-weight: bold;
-            color: var(--text-primary);
             margin-bottom: 10px;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .timezone {
             font-size: 0.9em;
-            color: var(--text-secondary);
             margin-bottom: 15px;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .time {
             font-size: 2.5em;
             font-weight: bold;
-            color: var(--accent-color);
             font-family: 'Courier New', monospace;
             letter-spacing: 2px;
             margin-bottom: 10px;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .date {
             font-size: 0.95em;
-            color: var(--text-tertiary);
             font-family: 'Courier New', monospace;
-            transition: color 0.3s ease;
-        }
-
-        .period {
-            font-size: 1.2em;
-            color: var(--accent-secondary);
-            font-weight: bold;
-            margin-left: 10px;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         /* Responsive design */
@@ -225,7 +269,7 @@
         }
     </style>
 </head>
-<body>
+<body class="light-mode">
     <div class="theme-toggle">
         <button class="theme-btn" id="themeToggle" title="Toggle Dark/Light Mode">
             <span class="theme-icon">🌙</span>
@@ -264,7 +308,7 @@
             const savedTheme = localStorage.getItem('theme') || 'light-mode';
             
             // Apply saved theme
-            document.body.classList.add(savedTheme);
+            document.body.className = savedTheme;
             updateThemeIcon(savedTheme);
             
             // Toggle theme on button click
@@ -272,13 +316,11 @@
                 const isDarkMode = document.body.classList.contains('dark-mode');
                 
                 if (isDarkMode) {
-                    document.body.classList.remove('dark-mode');
-                    document.body.classList.add('light-mode');
+                    document.body.className = 'light-mode';
                     localStorage.setItem('theme', 'light-mode');
                     updateThemeIcon('light-mode');
                 } else {
-                    document.body.classList.remove('light-mode');
-                    document.body.classList.add('dark-mode');
+                    document.body.className = 'dark-mode';
                     localStorage.setItem('theme', 'dark-mode');
                     updateThemeIcon('dark-mode');
                 }
@@ -315,11 +357,6 @@
             updateAllClocks();
         }
 
-        // Format time with leading zero
-        function formatTime(num) {
-            return num < 10 ? '0' + num : num;
-        }
-
         // Update all clocks
         function updateAllClocks() {
             timeZones.forEach(({ timezone }) => {
@@ -328,16 +365,6 @@
 
                 if (timeElement && dateElement) {
                     const now = new Date();
-                    const options = {
-                        timeZone: timezone,
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        second: '2-digit',
-                        hour12: true,
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric'
-                    };
 
                     const timeString = new Intl.DateTimeFormat('en-US', {
                         timeZone: timezone,
